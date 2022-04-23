@@ -12,7 +12,7 @@ script:
 
 deploy:
   provider: elasticbeanstalk
-  region: "us-east-2"
+  region: "us-east-1"
   # EBS app
   app: "docker-react"
   # EBS environment
@@ -20,16 +20,15 @@ deploy:
   # bucket is the amason s3 bucket where travis uploads the
   # zipped project. After that Travis pings Elastic Beanstalk
   # and tell that the bucket is loaded. Hence we provide s3 name
-  bucket_name: "elasticbeanstalk-us-east-2-879533672673"
+  bucket_name: "elasticbeanstalk-us-east-1-879533672673"
   # folder name inside the s3 bucket
   bucket_path: "docker-react"
   # only attempt to deploy when branch 'master' is updated
   on:
     branch: master
   # Access keys are generated in Amazon IAM service, new user, only
-  # programmatic access, admi rights
+  # programmatic access, admin rights
   # Access keys are then saved in Travis settings as environment variables
   # so we don't expose them
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  secret_access_key: $AWS_SECRET_KEY
